@@ -22,7 +22,9 @@ text until they do, because a link to a missing file shows up in Obsidian as a d
 - [[connections]]: systems this OS can reach
 
 ## Context (who you are: and the business)
-*Created by `onboard`: about-me, about-business, priorities. They appear here once they exist.*
+- [[about-me]]: Randy Djunaidi, CEO of Ascendiz, and where the week goes
+- [[about-business]]: what Ascendiz sells, the Tokopedia case, products, the AI line
+- [[priorities]]: the four priorities for this 90-day window
 
 ## Knowledge base
 - [[SCHEMA]]: the rules the wiki follows
@@ -39,7 +41,8 @@ text until they do, because a link to a missing file shows up in Obsidian as a d
 
 ## References
 - [[build-with-claude-code]]: plain-English guide to building and deploying apps here
-*`voice.md` is written by `onboard` from your writing samples.*
+- [[obsidian-rest-api]]: the `obsidian` MCP server, its 16 tools, and how to fix it when it breaks
+- [[voice]]: how you sound. **Empty: no samples given yet.** Drop writing samples to fill it.
 
 ## Skills
 

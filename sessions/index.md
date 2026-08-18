@@ -17,8 +17,6 @@ matches what you are working on. Never open the notes one by one.
 > **Writing rule:** every `session-handoff` run **must** add a row here, in the topic table and
 > in the chronological table. A handoff that is not in the catalog is invisible.
 
-Empty on purpose. Your first handoff creates the first row.
-
 ---
 
 ## By topic
@@ -26,9 +24,17 @@ Empty on purpose. Your first handoff creates the first row.
 *(Topic sections get created as they appear. One table per topic, for example "Website",
 "Finance", "Hiring".)*
 
+### Product concepts
+
 | Note | Date | Last known state |
 |---|---|---|
-| *(nothing yet)* | | |
+| [[2026-08-12 altus-koran-pagi]] | 2026-08-12 | Four Altus source docs read and gap-mapped; nothing refined yet, blocked on whether Koran Pagi is the product name or a feature name |
+
+### Tooling and connections
+
+| Note | Date | Last known state |
+|---|---|---|
+| [[2026-08-12 obsidian-mcp-setup]] | 2026-08-12 | Obsidian MCP live over HTTPS 27124 via stdio bridge; needs a session restart to be exercised, and commit plus token cleanup still open |
 
 ---
 
@@ -36,7 +42,8 @@ Empty on purpose. Your first handoff creates the first row.
 
 | Date | Note |
 |---|---|
-| *(nothing yet)* | |
+| 2026-08-12 | [[2026-08-12 altus-koran-pagi]] |
+| 2026-08-12 | [[2026-08-12 obsidian-mcp-setup]] |
 
 ## Connected
 - [[OS-INDEX]]

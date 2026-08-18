@@ -82,14 +82,27 @@ That's it for most people, no plugin, no key, no terminal.
 Want the AI to use **live Obsidian features** (Dataview, Obsidian's own search, surgical frontmatter
 edits)? Connect the Local REST API, the trade-off is you must **keep Obsidian open** whenever you use the OS.
 
-1. In Obsidian: **Settings → Community plugins → Browse →** install + enable **"Local REST API" →** copy its **API Key**.
-2. Paste the key into the chat, your AI runs this for you (or run it yourself; needs Node.js from `INSTALL-FIRST.md`):
+The plugin ships its own MCP server, so there is no npm package to install. The kit ships the one
+piece Claude Code is missing: a tiny stdio bridge at `.claude/scripts/obsidian-mcp-bridge.mjs`.
+It exists because the plugin serves HTTPS with a **self-signed certificate** that Claude Code's
+built-in HTTP transport refuses (`DEPTH_ZERO_SELF_SIGNED_CERT`). The bridge trusts that one
+certificate for that one connection, and nothing else on your machine changes.
+
+1. In Obsidian: **Settings → Community plugins → Browse →** install + enable **"Local REST API"**
+   (listed as *Local REST API with MCP*), then copy its **API Key**.
+2. Save the plugin's certificate somewhere outside this folder:
 ```bash
-claude mcp add obsidian -s user \
-  -e OBSIDIAN_API_KEY=<YOUR_OBSIDIAN_API_KEY> \
-  -- npx -y obsidian-mcp-server@latest
+curl -sk https://127.0.0.1:27124/obsidian-local-rest-api.crt -o ~/.claude/obsidian-local-rest-api.crt
 ```
-3. Restart Claude Code (Obsidian still open) and ask *"list my Obsidian notes"* to verify.
+3. Paste the key into the chat, your AI runs this for you (or run it yourself). Use the full path
+   to `node` if it is not on your PATH:
+```bash
+claude mcp add obsidian -s local -e OBSIDIAN_MCP_URL=https://127.0.0.1:27124/mcp/ -e OBSIDIAN_API_KEY=<YOUR_OBSIDIAN_API_KEY> -e OBSIDIAN_CA_FILE=$HOME/.claude/obsidian-local-rest-api.crt -- node .claude/scripts/obsidian-mcp-bridge.mjs
+```
+   `-s local` keeps the key in your private per-project config, never in this repo.
+4. Restart Claude Code (Obsidian still open) and ask *"list my Obsidian notes"* to verify.
+
+Details, the full tool list, and the fix-it steps live in `references/obsidian-rest-api.md`.
 
 > If keeping Obsidian always-open is a hassle, just skip this, the native default already does everything the OS needs.
 
